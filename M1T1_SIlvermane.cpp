@@ -15,7 +15,14 @@ int main() {
     string name;
     cin >> name;
 
-    cout << "Nice to meet you, " << name << endl; 
-    
+    cout << "Nice to meet you, " << name << endl ;
+
+    cout << "What are your hobbies? " ;
+    string hobbies;
+    cin >> hobbies;
+
+    cout << "I like hobbies to " << hobbies << endl ;
+
+
     return 0; // no errors 
 }
