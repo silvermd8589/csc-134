@@ -8,5 +8,7 @@
 using namespace std;
 
 int main() {
+    cout << "Hello CSC 134";   // c-out not count 
+    cout << endl;              // endl or "\n" is the end of line  
     return 0; // no errors 
 }
