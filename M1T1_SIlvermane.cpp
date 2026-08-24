@@ -9,6 +9,13 @@ using namespace std;
 
 int main() {
     cout << "Hello CSC 134";   // c-out not count 
-    cout << endl;              // endl or "\n" is the end of line  
+    cout << endl;              // endl or "\n" is the end of line 
+    
+    cout << "What is you your name? " ;
+    string name;
+    cin >> name;
+
+    cout << "Nice to meet you, " << name << endl; 
+    
     return 0; // no errors 
 }
