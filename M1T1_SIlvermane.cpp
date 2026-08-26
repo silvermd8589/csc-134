@@ -1,5 +1,5 @@
 // CSC 134
-// Silvemane
+// Silvermane
 // M1T1 - Hello World 
 // 8/24/26
 
