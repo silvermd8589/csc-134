@@ -20,7 +20,7 @@ int main()
 
     // Do product price calculations
     int product_count = 100;
-    double product_price = .75; // in USD
+    double product_price = .9996// in USD
 
     cout << "We have " << product_count << " ";
     cout << product << "(s) . They are $" << product_price;
@@ -29,6 +29,12 @@ int main()
     double total_price = product_count * product_price;
     cout << "total price for all " << product_count;
     cout << " is: $" << total_price << endl;
+
+    int quantity;
+    cout << "How many do you want? " << endl;
+    cin >> quantity;
+    double amount_owed = quantity * product_price;
+    cout << "Total owed: $" << amount_owed << endl;
 
 
     return 0;
