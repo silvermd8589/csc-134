@@ -21,7 +21,7 @@ int main() {
     movie_grossm = 74.1;
 
     // Print the movie blurb
-    cout << "The movie " << movie_name << "came out in " << movie_year << "." << endl;
+    cout << "The movie " << movie_name << " came out in " << movie_year << "." << endl;
 
     cout << "Its grossed in total $" << movie_grossm << " million." << endl;
 
