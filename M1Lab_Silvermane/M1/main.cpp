@@ -36,6 +36,12 @@ int main()
     double amount_owed = quantity * product_price;
     cout << "Total owed: $" << amount_owed << endl;
 
+    int color;
+    cout << "we have 2 colors, red and green";
+    cout << "What color do you want? "; endl;
+    cin >> color;
+    cout << "color choice"; endl;
+
 
     return 0;
 }
