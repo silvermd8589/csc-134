@@ -27,6 +27,7 @@ int main() {
 
     //Print a movie qoute 
     cout << "Qoute:" << endl << " \t\"Look I had this ship built in three damn months, I didn't think I'd deliberately be sabotaging her! \" " << endl;
+    cout << "Qoute:" << 
 
 
 
