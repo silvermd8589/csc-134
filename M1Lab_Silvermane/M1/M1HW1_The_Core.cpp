@@ -32,7 +32,7 @@ int main() {
     cout << "Qoute:" << endl << " \t\" The core has stopped spinning. \" " << endl;
 
     // Print triva 
-    cout << "triva:" << endl << "\t\"The Unobtainium Riddle: The fictional material used to build the ship, \"Unobtainium,\" is a classic aerospace engineering industry joke for a material that has ideal properties but is impossible to get.\"" << endl;
+    cout << "triva:" << endl << "\t\"The Unobtainium Riddle: The fictional material used to build the ship, Unobtainium, is a classic aerospace engineering industry joke for a material that has ideal properties but is impossible to get.\"" << endl;
     cout << "triva:" << endl << "\t\"Box Office Run: Despite a reported production budget of around $60 million, the film grossed just over $74 million worldwide, making it a box office bomb.\"" << endl;
 
 
