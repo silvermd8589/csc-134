@@ -6,6 +6,8 @@
 
 
 #include <iostream>
+// iomanip lets you use setw() and setprecision() and fixed 
+#include <iomanip> 
 #include <string>
 using namespace std;
 
@@ -38,10 +40,10 @@ total       = meal_price + tax_ammount;
 // print like a receipt
 string line = "____________________________";
 cout << line << endl;
-cout << meal_name << " " << meal_price << endl;
-cout << "tax: " << " " << tax_ammount << endl;
+cout << meal_name << " " << setw(10) << fixed << setprecision(2) << meal_price << endl;
+cout << "tax: " << " " << setw(21) << fixed << setprecision(2) << tax_ammount << endl;
 cout << line << endl;
-cout << "Total: " << total << endl;
+cout << "Total: " << setw(20) << fixed << setprecision(2) << total << endl;
 cout << "Thank you come again." << endl << endl;
 
 
