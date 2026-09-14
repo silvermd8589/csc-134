@@ -6,6 +6,7 @@
 
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
@@ -27,11 +28,21 @@ meal_price = 5.99;
 tax_rate =   0.08;
 
 //processing 
+// tax is the meal * the tax rate
+tax_ammount = meal_price * tax_rate;
+total       = meal_price + tax_ammount;
 
 
 
 //output 
-
+// print like a receipt
+string line = "____________________________";
+cout << line << endl;
+cout << meal_name << " " << meal_price << endl;
+cout << "tax: " << " " << tax_ammount << endl;
+cout << line << endl;
+cout << "Total: " << total << endl;
+cout << "Thank you come again." << endl << endl;
 
 
 
