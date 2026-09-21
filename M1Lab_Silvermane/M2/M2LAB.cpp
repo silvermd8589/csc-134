@@ -24,5 +24,11 @@ int main()
     double profit, // the profit made 
 
     //set the desired output formatting for numbers 
-    cout << 
+    cout << setprecision(2) << fixed << showpoint;
+    // prompt the user for the crate"s lenght width and height 
+    cout << "Enter the dimensions of the crate (in feet) :\n";
+    cout << "Length:    ";
+    cin >> length;
+    cout << "Width  ";
+    cin >> 
 }
