@@ -16,7 +16,7 @@ int main() {
 
     //input ask for length and width of both 
     cout << "First recteangle." << endl;
-    cout << "\t length? ";
+    cout << "\tlength?  ";
     cin >> length1;
     cout << "\twidth?   ";
     cin >> width1;
