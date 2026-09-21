@@ -5,7 +5,7 @@
 // Crates 
 
 
-#include <isostream>
+#include <iostream>
 #include <iomanip>
 using namespace std;
 
@@ -16,12 +16,12 @@ int main()
     const double CHARGE_PER_CUBIC_FOOT = .05;
 
     //Variables 
-    double length, // the crates lenght 
-    double width, // "" width
-    double height, // "" height 
-    double cost, // the cost to build the crate 
-    double charge, // the customer charge for the crate 
-    double profit, // the profit made 
+        double length, // the crate's length
+            width,  // the crate's width
+            height, // the crate's height
+            cost,   // the cost to build the crate
+            charge, // the customer charge for the crate
+            profit; // the profit made
 
     //set the desired output formatting for numbers 
     cout << setprecision(2) << fixed << showpoint;
@@ -30,5 +30,9 @@ int main()
     cout << "Length:    ";
     cin >> length;
     cout << "Width  ";
-    cin >> 
+    cin >> width;
+    cout << "Height  ";
+    cin >> height;
+
+    
 }
