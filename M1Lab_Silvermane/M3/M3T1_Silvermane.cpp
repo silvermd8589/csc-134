@@ -16,16 +16,19 @@ int main() {
 
     //input ask for length and width of both 
     cout << "First recteangle." << endl;
-    cout << "\t length?";
+    cout << "\t length? ";
     cin >> length1;
-    cout << "\twidth   ?";
+    cout << "\twidth?   ";
     cin >> width1;
 
     cout << "2nd rectangle:" << endl;
-    cout << "\tlength  ?";
+    cout << "\tlength?  ";
     cin >> length2;
-    cout << "\twidth   ?";
+    cout << "\twidth?   ";
     cin >> width2;
+    // another way to do it
+    // cout << "enter rectangle 1's dimensions, put a space between them: ";
+
 
 
     area1 = length1 * width1;
@@ -34,7 +37,17 @@ int main() {
     cout << "Area of first rectangle: " << area1 << endl;
     cout << "Area of second rectangle: " << area2 << endl;
 
-
+    // if statement test fo r true or false
+    if (area1 > area2) {
+        cout << "The first rectangle is larger." << endl;
+    }
+    else if (area1 < area2) {
+        cout << "The second rectangle is larger." << endl;
+    }
+    else if (area1 == area2) {
+        cout << "The rectangles are the same size." << endl;
+    }
+    
 
 
     return 0;
