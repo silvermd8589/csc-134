@@ -12,10 +12,10 @@ using namespace std;
 int main() {
     //Set up variables
     int account_type;
-    const int acount_checking = 1;
-    const int acount_saving = 2;
-    const int acount_401k = 3; 
-   
+    const int account_checking = 1;
+    const int account_saving = 2;
+    const int account_401k = 3; 
+    
 
 
 
@@ -29,17 +29,17 @@ int main() {
     cout << "2. Savings, ";
     cout << "3. 401k. " << endl;
     cin >> account_type;
-    if (account_type == acount_checking) {
+    if (account_type == account_checking) {
         cout << "You have selected checkings," << endl;
         cout << "Account number: 94722435413 " << endl;
         cout << "Current Balance: $-50.00" << endl;
     }
-    if (account_type == acount_saving) {
+    if (account_type == account_saving) {
         cout << "you have selected savings," << endl;
         cout << "Account number: 74536461964" << endl;
         cout << "current Balance: $43.87" << endl;
     }
-    if (account_type == acount_401k) {
+    if (account_type == account_401k) {
         cout << "You have selected 401k," << endl;
         cout << "Account number: 60618556011" << endl;
         cout << "Current Balance: $203,564.25" << endl;
@@ -58,7 +58,7 @@ int main() {
     int transaction_type;
     cin >> transaction_type;
     if (transaction_type == withdraw) {
-        if (account_type == acount_checking) {
+        if (account_type == account_checking) {
             cout << "please enter the amount to withdraw: ";
             double withdraw_amount;
             cin >> withdraw_amount;
@@ -72,7 +72,7 @@ int main() {
         }
     }
     if (transaction_type == withdraw) {
-        if (account_type == acount_saving) {
+        if (account_type == account_saving) {
             cout << "please enter the amount to withdraw: ";
             double withdraw_amount;
             cin >> withdraw_amount;
@@ -86,7 +86,7 @@ int main() {
         }
     }
     if (transaction_type == withdraw) {
-        if (account_type == acount_401k) {
+        if (account_type == account_401k) {
             cout << "please enter the amount to withdraw: ";
             double withdraw_amount;
             cin >> withdraw_amount;
@@ -97,6 +97,36 @@ int main() {
             } else {
                 cout << "Insufficient funds." << endl;
             }
+        }
+    }
+    if (transaction_type == deposit) {
+        if (account_type == account_checking) {
+            cout << "please enter the amount you wish to deposit." << endl;
+            double deposit_amount;
+            cin >> deposit_amount;
+            checking_balance = checking_balance + deposit_amount;
+            cout << "counting money....adding it to checking account" << endl;
+            cout << "Current Balance: $" << checking_balance << endl;
+        }
+    }
+    if (transaction_type == deposit) {
+        if (account_type == account_saving) {
+            cout << "please enter the amount you wish to deposit." << endl;
+            double deposit_amount;
+            cin >> deposit_amount;
+            saving_balance = saving_balance + deposit_amount;
+            cout << "counting money....adding it to saving account" << endl;
+            cout << "Current Balance: $" << saving_balance << endl;
+        }
+    }
+    if (transaction_type == deposit) {
+        if (account_type == account_401k) {
+            cout << "please enter the amount you wish to deposit." << endl;
+            double deposit_amount;
+            cin >> deposit_amount;
+            _401k_balance = _401k_balance + deposit_amount;
+            cout << "counting money....adding it to 401k account" << endl;
+            cout << "Current Balance: $" << _401k_balance << endl;
         }
     }
 
