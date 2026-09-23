@@ -23,7 +23,7 @@ int main() {
     cout << "Welcome to Silver Credit " << endl;
     cout << "Insert card" << endl;
     cout << "BEEB BOP DAIL UP NOISE" << endl;
-    cour << "Hello Mr.Random Bank Member" << endl;
+    cout << "Hello Mr.Random Bank Member" << endl;
     cout << "which acount would you like" << endl;
     cout << "1. Checkings, ";
     cout << "2. Savings, ";
@@ -41,18 +41,64 @@ int main() {
     }
     if (account_type == acount_401k) {
         cout << "You have selected 401k," << endl;
-        cout << "Account number: 60618556011"
+        cout << "Account number: 60618556011" << endl;
         cout << "Current Balance: $203,564.25" << endl;
     }
 
-    int main()
     // seting with draw and depsiot 
-    const double checking_balance = -50.00;
-    const double saving_balance = 43.87;
-    const double _401k_balance = 203564.25;
-    
+    double checking_balance = -50.00;
+    double saving_balance = 43.87;
+    double _401k_balance = 203564.25;
+    const int withdraw = 1;
+    const int deposit = 2;
 
-
+    cout << "Would you like to withdraw or deposit?" << endl;
+    cout << "withdraw 1" << endl;
+    cout << "deposit 2" << endl;
+    int transaction_type;
+    cin >> transaction_type;
+    if (transaction_type == withdraw) {
+        if (account_type == acount_checking) {
+            cout << "please enter the amount to withdraw: ";
+            double withdraw_amount;
+            cin >> withdraw_amount;
+            if (withdraw_amount <= checking_balance) {
+                cout << "Withdrawal successful." << endl;
+                checking_balance = checking_balance - withdraw_amount;
+                cout << "Current Balance: $" << checking_balance << endl;
+            } else {
+                cout << "Insufficient funds." << endl;
+            }   
+        }
+    }
+    if (transaction_type == withdraw) {
+        if (account_type == acount_saving) {
+            cout << "please enter the amount to withdraw: ";
+            double withdraw_amount;
+            cin >> withdraw_amount;
+            if (withdraw_amount <= saving_balance) {
+                cout << "Withdrawal successful." << endl;
+                saving_balance = saving_balance - withdraw_amount;
+                cout << "Current Balance: $" << saving_balance << endl;
+            } else {
+                cout << "Insufficient funds." << endl;
+            }
+        }
+    }
+    if (transaction_type == withdraw) {
+        if (account_type == acount_401k) {
+            cout << "please enter the amount to withdraw: ";
+            double withdraw_amount;
+            cin >> withdraw_amount;
+            if (withdraw_amount <= _401k_balance) {
+                cout << "Withdrawal successful." << endl;
+                _401k_balance = _401k_balance - withdraw_amount;
+                cout << "Current Balance: $" << _401k_balance << endl;
+            } else {
+                cout << "Insufficient funds." << endl;
+            }
+        }
+    }
 
     return 0; // no errors
 
