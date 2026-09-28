@@ -18,8 +18,20 @@
         cout << "1 Choose door #1" << endl;
         cout << "2 Choose door #2" << endl;
         cin << "?";
-        
+
+        if (1 == choice) {
+            chooseDoor1();
+        }
+        else if (2 == choice) {
+            chooseDoor2();
+        }
+        else{
+            cout << "I'm sorry, that is not a valid choice" << endl;
+
+        cout << "Thank you for plsying!" << endl;
+
     }
+    
 
 
     return 0; //no errors 
