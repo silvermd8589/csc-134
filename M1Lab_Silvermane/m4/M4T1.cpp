@@ -1,5 +1,22 @@
 //CSC-134
 // SIlvermane
-// M1HW1_The_Core 
-//8/31/26
-// Movie Talk The Core 
+// M1T4
+//10/5/2026
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+ // counting loop (part 1)
+    int count = 1;
+    while (count < 6) {
+    cout << "Hello #: " << count << endl;
+    count++; // increament after showing number
+    }
+
+
+    // table of squares (part 2)
+
+
+    }
