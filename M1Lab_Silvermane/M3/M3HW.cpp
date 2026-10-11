@@ -172,7 +172,10 @@ void question_3() {
     cout << "The customer is not happy about this and transfrom into a gaint Karen and tries to attack you" << endl;
     cout << "Would you like to fight the Karen or run away? (Enter 'fight' or 'run'): " << endl;
     cin >> answer;
-        if (answer == "run") {
+        if (answer == "invalid") {
+            cout << "That is not a valid answer, please try again" << endl;
+        }
+        else if (answer == "run") {
         cout << "You have chose to run away" << endl;
         cout << "You call the office and they inform you are being charged the service call fee of $175.00" << endl;
         cout << "You are now paying $175.00 for a call because a customer could not check a thermostat and you were afraid to fight a Karen" << endl;
@@ -191,6 +194,9 @@ void question_3() {
         else if (answer == "hit") {
             cout << "You take the hit and now have a knot on your head" << endl;
         }
+        else if (answer == "invalid") {
+            cout << "That is not a valid answer, please try again" << endl;
+        }
     }
     cout << "Now that you have been hit, you are allowed to use weapons to fight the Karen" << endl;
     cout << "You have a hammer and a wrench, and a 11 in 1 screwdriver. Which one will you use? (Enter 'hammer', 'wrench', or 'screwdriver'): " << endl;
@@ -206,6 +212,9 @@ void question_3() {
         cout << "You swing your screwdriver at her stash of soup cans so she has no more to throw" << endl;
         cout << "You have successfully destroyed the Karen's soup can stash" << endl;
     }
+    else if (answer == "invalid") {
+            cout << "That is not a valid answer, please try again" << endl;
+        }
     cout << "You have successfully fought the Karen and she has paid the bill" << endl;
     cout << "You go back to your van with a knot of your head and pull up the dispatch log to see you have yet another no cooling call" << endl;
     }
