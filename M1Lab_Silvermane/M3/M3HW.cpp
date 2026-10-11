@@ -31,7 +31,7 @@ void question_1() {
     string answer;
 
     while (true) {
-        cout << "Do you like me? (Enter yes, no, or maybe)" << endl;
+        cout << "Do you like me? (Enter yes, no, or maybe) (type done to finish)" << endl;
         cin >> answer;
 
         if (answer == "no") {
@@ -45,8 +45,11 @@ void question_1() {
             cout << "I am not entirely sure how I like you too because I am a computer and I have no emotions" << endl;
         } else if (answer == "maybe") {
             cout << "Well I guess we did just meet and need time to get to know each other" << endl;
-        } else {
-            cout << "Please enter yes, no, or maybe." << endl;
+       
+        }
+        else if (answer == "done") {
+            cout << "Thank you for your time, I hope you had fun playing with an emotionless computer looking for a friend" << endl;
+            break;
         }
     }
 }
