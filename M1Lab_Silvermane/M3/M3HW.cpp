@@ -1,6 +1,6 @@
 //CSC-134
 // Silvermane
-// M3HW-Bronze
+// M3HW-Silver
 //10/11/26
 
 #include <iostream>
