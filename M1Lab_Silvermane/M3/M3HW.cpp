@@ -1,5 +1,5 @@
-///CSC-134
-// SIlvermane
+//CSC-134
+// Silvermane
 // M3HW-Bronze
 //10/11/26
 
@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <iomanip>
 using namespace std;
 
 void question_1();
@@ -25,8 +26,7 @@ int main() {
         question_1();
     } else if (choice == 2) {
         question_2();
-    }
-    else {
+    } else {
         cout << "That is not a valid choice, please try again" << endl;
     }
 
@@ -64,6 +64,47 @@ void question_1() {
 }
 
 void question_2() {
-    cout << "Question 2 is not implemented yet." << endl;
+    cout << "Thank you for looking at Question 2!" << endl;
+
+    // Declare variables
+    string mealName;
+    double mealPrice;
+    int diningOption;
+    const double taxRate = 0.08;
+    const double dineInTipRate = 0.15;
+    double tipRate, taxAmount, tipAmount, total;
+
+    // Input
+    cin.ignore();  // clear the leftover Enter from the menu choice
+    cout << "Enter the meal name: ";
+    getline(cin, mealName);
+
+    cout << "Enter the meal price: ";
+    cin >> mealPrice;
+
+    cout << "Dine in or dine out? (1 for dine in, 2 for dine out): ";
+    cin >> diningOption;
+
+    // Processing
+    if (diningOption == 1) {
+        tipRate = dineInTipRate;   // dine in: 15% tip
+    } else if (diningOption == 2) {
+        tipRate = 0.0;             // dine out: no tip
+    } else {
+        cout << "That is not a valid option, assuming dine out (no tip)" << endl;
+        tipRate = 0.0;
+    }
+
+    taxAmount = mealPrice * taxRate;
+    tipAmount = mealPrice * tipRate;
+    total = mealPrice + taxAmount + tipAmount;
+
+    // Output
+    cout << fixed << setprecision(2);
+    cout << "Meal:  " << mealName << endl;
+    cout << "Price: $" << mealPrice << endl;
+    cout << "Tax:   $" << taxAmount << endl;
+    cout << "Tip:   $" << tipAmount << endl;
+    cout << "Total: $" << total << endl;
 }
 
