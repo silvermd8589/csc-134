@@ -161,5 +161,35 @@ void question_3() {
     cout << "You inform the customer the system was turned off and they need to verify system settings before calling for service" << endl;
     cout << "You inform the customer will still be charged the service call fee of $175.00" << endl;
     cout << "The customer is not happy about this and transfrom into a gaint Karen and tries to attack you" << endl;
-    
+    cout << "Would you like to fight the Karen or run away? (Enter 'fight' or 'run'): " << endl;
+    cin >> answer;
+    if (answer == "fight") {
+        cout << "You try to fight the Karen but she is well trained in tearing you down with words" << endl;
+        cout << "You try to explain that her inability to check the thermostat is not your problem" << endl;
+        cout << "The Karen throws a can of chicken noddle soup at you" << endl;
+        cout << "Will you dodge or get hit? (Enter 'dodge' or 'hit'): " << endl;
+        cin >> answer;
+        if (answer == "dodge") {
+            cout << "You can not dodge the can, as she is a marksman in soup can throwing" << endl;
+            cout << "You now have a knot on your head" << endl;
+        }
+        else if (answer == "hit") {
+            cout << "You take the hit and now have a knot on your head" << endl;
+        }
+    cout << "Now that you have been hit, you are allow to use weapons to fight the Karen" << endl;
+    cout << "You have a hammer and a wrench, and a 11 in 1 screwdriver. Which one will you use? (Enter 'hammer', 'wrench', or 'screwdriver'): " << endl;
+    cin >> answer;
+    if (answer == "hammer") {
+        cout << "You swing your hammer at her toe to stops her from being able to run away" << endl;
+        cout << "You have successfully stopped the Karen from running away" << endl;
+    else if (answer == "wrench") {
+        cout << "You swing your wrench at her arm so she can not throw another soup can" << endl;
+        cout << "You have successfully stopped Karen from throwing soup cans" << endl;
+    }
+    else if (answer == "screwdriver") {
+        cout << "You swing your screwdriver at her stash of soup cans so she has no more to throw" << endl;
+        cout << "You have successfully destroyed the Karen's soup can stash" << endl;
+    }
+    cout << "You have successfully fought the Karen and she has paid the bill" << endl;
+    cout << "You go back to your van with a knot of your head and pull up the dispatch log to see you have yet another no cooling call" << endl;
 }
