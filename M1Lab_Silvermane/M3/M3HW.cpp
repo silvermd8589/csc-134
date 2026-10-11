@@ -19,14 +19,16 @@ int main() {
 
     cout << "Good evening/morning, I present you the questions for M3HW" << endl;
     cout << "which one would you like to look at?" << endl;
-    cout << "Question 1 or Question 2?" << endl;
-    cout << "1 for question 1, 2 for question 2" << endl;
+    cout << "Question 1, Question 2, or Question 3?" << endl;
+    cout << "1 for question 1, 2 for question 2, 3 for question 3" << endl;
     cin >> choice;
 
     if (choice == 1) {
         question_1();
     } else if (choice == 2) {
         question_2();
+    } else if (choice == 3) {
+        question_3();
     } else {
         cout << "That is not a valid choice, please try again" << endl;
     }
@@ -114,20 +116,50 @@ void question_3() {
     string answer;
     cout << "Thank you for looking at Question 3!" << endl;
     cout << "Welcome to Dungeon of HVAC" << endl;
-    cout << "Please enter yor name: " << endl;
+    cout << "Please enter your name: " << endl;
     cin >> name;
     cout << "Hello, " << name << "! Welcome to the Dungeon of HVAC." << endl;
-    cout << "You have a meter and are looking at a conmtrol panel that is power up" << endl;
-    cout << "The unit will not run when called." << endl;
+    cout << "You have a meter and are looking at a control panel for a residential HVAC system." << endl;
+    cout << "Customer states the unit is not running and it is hot in the house." << endl;
     cout << "Will you check power with your meter or your hands? (Enter 'meter' or 'hands'): " << endl;
     cin >> answer;
     if (answer == "meter") {
         cout << "You see the main power reading is 240v" << endl;
-        cout << "The contactor will not pull in when called." << endl;
+        cout << "The contactor is not pulled in." << endl;
     }
     else if (answer == "hands") {
         cout << "You decide to check the power with your hands." << endl;
         cout << "As you the main power wires and feel the wonderful feeling of 240v at 35amps." << endl;
-        cout << "This does not kill you but leaves you shaking"
+        cout << "This does not kill you but leaves you shaking" << endl;
+        cout << "next time use you meter" << endl;
     }
+    cout << "Now that we know there is power on the unit, we need to check to see if the transformer is working." << endl;
+    cout << "Will you check the transformer with your meter or your hands? (Enter 'meter' or 'hands'): " << endl;
+    cin >> answer;
+    if (answer == "meter") {
+        cout << "You see the transformer is putting out 24v" << endl;
+        cout << "The contactor will not pull in when called." << endl;
+    }
+    else if (answer == "hands") {
+        cout << "Do we really need to do this again?" << endl;
+        cout << "The 24v does not kill you but at this point you are starting to feel like a fool" << endl;
+        cout << "next time use you meter" << endl;
+    }
+    cout << "Well the transfromer is working" << endl;
+    cout << "Have you even checked the thermostat yet?" << endl;
+    cin >> answer;
+    if (answer == "yes") {
+        cout << "No you haven't, i never gave you the option" << endl;
+        cout << "PLease check the thermostat and make sure it is calling for cooling" << endl;
+        cout << "you find it not even calling for cooling, the system is set to off and you have wasted your time" << endl;
+    }
+    else if (answer == "no") {
+        cout << "Good, please check the thermostat and make sure it is calling for cooling" << endl;
+        cout << "You find it not even calling for cooling, the system is set to off and you have wasted your time" << endl;
+    }
+    cout << "You switch the thermostat to cooling and hear the system start up and starts blowing cold air into the house" << endl;
+    cout << "You inform the customer the system was turned off and they need to verify system settings before calling for service" << endl;
+    cout << "You inform the customer will still be charged the service call fee of $175.00" << endl;
+    cout << "The customer is not happy about this and transfrom into a gaint Karen and tries to attack you" << endl;
+    
 }
