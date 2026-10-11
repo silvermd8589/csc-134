@@ -12,6 +12,7 @@ using namespace std;
 
 void question_1();
 void question_2();
+void question_3();
 
 int main() {
     int choice;
@@ -108,3 +109,25 @@ void question_2() {
     cout << "Total: $" << total << endl;
 }
 
+void question_3() {
+    string name;
+    string answer;
+    cout << "Thank you for looking at Question 3!" << endl;
+    cout << "Welcome to Dungeon of HVAC" << endl;
+    cout << "Please enter yor name: " << endl;
+    cin >> name;
+    cout << "Hello, " << name << "! Welcome to the Dungeon of HVAC." << endl;
+    cout << "You have a meter and are looking at a conmtrol panel that is power up" << endl;
+    cout << "The unit will not run when called." << endl;
+    cout << "Will you check power with your meter or your hands? (Enter 'meter' or 'hands'): " << endl;
+    cin >> answer;
+    if (answer == "meter") {
+        cout << "You see the main power reading is 240v" << endl;
+        cout << "The contactor will not pull in when called." << endl;
+    }
+    else if (answer == "hands") {
+        cout << "You decide to check the power with your hands." << endl;
+        cout << "As you the main power wires and feel the wonderful feeling of 240v at 35amps." << endl;
+        cout << "This does not kill you but leaves you shaking"
+    }
+}
