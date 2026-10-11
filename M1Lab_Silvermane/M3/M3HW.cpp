@@ -15,22 +15,31 @@ void question_2();
 void question_3();
 
 int main() {
-    int choice;
+    string menuChoice;
 
     cout << "Good evening/morning, I present you the questions for M3HW" << endl;
-    cout << "which one would you like to look at?" << endl;
-    cout << "Question 1, Question 2, or Question 3?" << endl;
-    cout << "1 for question 1, 2 for question 2, 3 for question 3" << endl;
-    cin >> choice;
 
-    if (choice == 1) {
-        question_1();
-    } else if (choice == 2) {
-        question_2();
-    } else if (choice == 3) {
-        question_3();
-    } else {
-        cout << "That is not a valid choice, please try again" << endl;
+    while (true) {
+        cout << endl;
+        cout << "Which one would you like to look at?" << endl;
+        cout << "Enter 1, 2, or 3 for a question, or 'done' to quit: " << endl;
+        cin >> menuChoice;
+
+        // Convert to lowercase so Done and DONE work too
+        transform(menuChoice.begin(), menuChoice.end(), menuChoice.begin(), ::tolower);
+
+        if (menuChoice == "1") {
+            question_1();
+        } else if (menuChoice == "2") {
+            question_2();
+        } else if (menuChoice == "3") {
+            question_3();
+        } else if (menuChoice == "done") {
+            cout << "Thank you for looking at the questions, have a good day" << endl;
+            break;
+        } else {
+            cout << "That is not a valid choice, please try again" << endl;
+        }
     }
 
     return 0;
@@ -129,7 +138,7 @@ void question_3() {
     }
     else if (answer == "hands") {
         cout << "You decide to check the power with your hands." << endl;
-        cout << "As you the main power wires and feel the wonderful feeling of 240v at 35amps." << endl;
+        cout << "As you grab the main power wires and feel the wonderful feeling of 240v at 35amps." << endl;
         cout << "This does not kill you but leaves you shaking" << endl;
         cout << "next time use you meter" << endl;
     }
@@ -145,7 +154,7 @@ void question_3() {
         cout << "The 24v does not kill you but at this point you are starting to feel like a fool" << endl;
         cout << "next time use you meter" << endl;
     }
-    cout << "Well the transfromer is working" << endl;
+    cout << "Well the transformer is working" << endl;
     cout << "Have you even checked the thermostat yet?" << endl;
     cin >> answer;
     if (answer == "yes") {
@@ -163,7 +172,13 @@ void question_3() {
     cout << "The customer is not happy about this and transfrom into a gaint Karen and tries to attack you" << endl;
     cout << "Would you like to fight the Karen or run away? (Enter 'fight' or 'run'): " << endl;
     cin >> answer;
-    if (answer == "fight") {
+        if (answer == "run") {
+        cout << "You have chose to run away" << endl;
+        cout << "You call the office and they inform you are being charged the service call fee of $175.00" << endl;
+        cout << "You are now paying $175.00 for a call because a customer could not check a thermostat and you were afraid to fight a Karen" << endl;
+        return;  // ends the game
+    }
+        else if (answer == "fight") {
         cout << "You try to fight the Karen but she is well trained in tearing you down with words" << endl;
         cout << "You try to explain that her inability to check the thermostat is not your problem" << endl;
         cout << "The Karen throws a can of chicken noddle soup at you" << endl;
@@ -176,13 +191,14 @@ void question_3() {
         else if (answer == "hit") {
             cout << "You take the hit and now have a knot on your head" << endl;
         }
-    cout << "Now that you have been hit, you are allow to use weapons to fight the Karen" << endl;
+    }
+    cout << "Now that you have been hit, you are allowed to use weapons to fight the Karen" << endl;
     cout << "You have a hammer and a wrench, and a 11 in 1 screwdriver. Which one will you use? (Enter 'hammer', 'wrench', or 'screwdriver'): " << endl;
     cin >> answer;
     if (answer == "hammer") {
         cout << "You swing your hammer at her toe to stops her from being able to run away" << endl;
         cout << "You have successfully stopped the Karen from running away" << endl;
-    else if (answer == "wrench") {
+    } else if (answer == "wrench") {
         cout << "You swing your wrench at her arm so she can not throw another soup can" << endl;
         cout << "You have successfully stopped Karen from throwing soup cans" << endl;
     }
@@ -192,4 +208,6 @@ void question_3() {
     }
     cout << "You have successfully fought the Karen and she has paid the bill" << endl;
     cout << "You go back to your van with a knot of your head and pull up the dispatch log to see you have yet another no cooling call" << endl;
-}
+    }
+
+
