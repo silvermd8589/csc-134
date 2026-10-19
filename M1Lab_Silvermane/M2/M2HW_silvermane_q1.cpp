@@ -1,8 +1,4 @@
-//CSC-134
-// SIlvermane
-// M2HW
-//9/21/26
-// Bronze
+
 
 #include <iostream>
 #include <iomanip>
