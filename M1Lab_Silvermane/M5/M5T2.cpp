@@ -1,6 +1,7 @@
 /*
 csc 134 
 M5T2
+Silvermane/ Claude ai
 with a partner, write a c++ program that prints the number 1-10
 and their squares using one value-returning function and void function
 */
