@@ -19,14 +19,15 @@ void master_bedrooom();
 void bedroom_2();
 void bedroom_3();
 void shed();
-int name;
+string name;
 string choice;
 
 int main () {
     
     cout << "Welcome to the house of horrors for adults" << endl;
     cout << "what is you Name?" << endl;
-    cin >> name;
+    cin >> name; // note: use getline() if you want a space in names
+
     cout << "You are standing in front of a drak gloomy looking house." << endl;
     cout << "You look around and see there are no other houses around " << endl;
     cout << "Would you like to enter through the front door or the back door?" << endl;
@@ -57,13 +58,26 @@ void front_door() {
     }
 }
 void back_door() {
+    string secret = "cabinet";
     cout << "You have enter in through the back door." << endl;
-    cout << "You find yourself standing in the kicthen." endl;
+    cout << "You find yourself standing in the kicthen." << endl;
     cout << "It is a normal kicthen, stove, cabinets, fridge, table and chairs." << endl;
     cout << "You can a hear a tv playing so load you can not hear anyting else." << endl;
-    cout << "Would you like to stay in this room or go living room?"
+    cout << "Would you like to stay in this room or go living room?";
     cin >> choice;
     if (choice == "stay") {
-        
+        cout << "would you like to search in anything?" << endl;
+        cin >> choice;
+            if (choice == "yes") {
+                cout << "What would you like to search? cabinet, stove, fridge or cabniet.";
+                cin >> choice;
+                if (choice == secret) {
+                    cout << "A gold coin!" << endl;
+                }
+                else {
+                    cout << "Some lint." << endl;
+                }
+            }
+
     }
 }
