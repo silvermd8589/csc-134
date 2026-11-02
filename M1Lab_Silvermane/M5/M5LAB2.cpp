@@ -1,39 +1,52 @@
+//Daniel Silvermane
 // M5LAB2
-// Header goes here
+//11/2/2026
+// Efeing BOB
  
 #include <iostream>
+#include <string>
 using namespace std;
  
 // Declare (Write the prototypes for)
 // the getLength,
 // getWidth, getArea, and displayData
 // functions here.
- 
-int main()
-{
-    // This program calculates the area of a rectangle.
-    // TODO: fix any syntax errors
- 
-    double length,    // The rectangle's length
-           width,     // The rectangle's width
-           area;      // The rectangle's area
- 
-    // Get the rectangle's length.
-    length = getLength();
- 
-    // Get the rectangle's width.
-    width = getWidth()
- 
-    // Get the rectangle's area.
-    are = getArea();
- 
-    // Display the rectangle's data.
+
+
+// prototypes
+double getLength();
+double getWidth();
+double getArea(double length, double width);
+void displayData(double length, double width, double area);
+
+int main() {
+    double length = getLength();
+    double width = getWidth();
+    double area = getArea(length, width);
+
     displayData(length, width, area);
- 
     return 0;
 }
- 
-//***************************************************
-// TODO: write the getLength, getWidth, getArea,    *
-// and displayData functions below.                 *
-//***************************************************
+
+double getLength() {
+    string input;
+    cout << "Enter the length in inches: ";
+    getline(cin, input);
+    return stod(input);
+}
+
+double getWidth() {
+    string input;
+    cout << "Enter the width in inches: ";
+    getline(cin, input);
+    return stod(input);
+}
+
+double getArea(double length, double width) {
+    return length * width;
+}
+void displayData(double length, double width, double area) {
+    cout << "The length is " << length << " inches." << endl;
+    cout << "The width is " << width << " inches." << endl;
+    cout << "The area is " << area << " square inches." << endl;
+}
