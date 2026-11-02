@@ -5,12 +5,13 @@
 //spooky game
 
 #include <iostream>
+#include <string>
 #include <limits>
 #include <algorithm>
 #include <cctype>
-
+ 
 using namespace std;
-
+ 
 // prototypes
 void front_door();
 void back_door();
@@ -23,7 +24,7 @@ void bedroom_2();
 void bedroom_3();
 void hallway();
 void payment_room();
-
+ 
 // ---- coin tracking ----
 int coins = 0;               // total gold coins collected
 const int TAX_OWED = 14;     // coins needed to beat the tax man (change this to adjust difficulty)
@@ -35,7 +36,7 @@ bool masterBathCoin = false;    // 1 coin
 bool bathroomCoin = false;      // 1 coin
 bool bedroom2Coins = false;     // 5 coins
 bool bedroom3Coins = false;     // 5 coins
-
+ 
 string choice;
 string toLower(string s) {
     transform(s.begin(), s.end(), s.begin(),
@@ -54,62 +55,60 @@ void findCoins(bool& taken, int amount) {
         cout << "You now have " << coins << " gold coin(s)." << endl;
     }
 }
-
+ 
 int main () {
     string name;
     cout << "Welcome to the house of horrors for adults" << endl;
     cout << "what is you Name?" << endl;
     getline(cin, name); // get a name that can contain spaces
-
+ 
     cout << "You are standing in front of a drak gloomy looking house." << endl;
     cout << "You look around and see there are no other houses around " << endl;
     cout << "Would you like to enter through the front door or the back door?" << endl;
     while (true) {
-    getline(cin >> ws, choice);
-    choice = toLower(choice);
-    if (choice == "front") {
-        front_door();
-        break;
-    }
-    else if (choice == "back") {
-        back_door();
-        break;
-    }
-       else {
+        getline(cin, choice);
+        choice = toLower(choice);
+        if (choice == "front") {
+            front_door();
+            break;
+        }
+        else if (choice == "back") {
+            back_door();
+            break;
+        }
+        else {
             cout << "Please type front or back." << endl;
         }
-}
-    
-    
+    }
+ 
     return 0;
 }
-
+ 
 void front_door() {
     cout << "You are standing in the living room" << endl;
     living_room();
-    
 }
+ 
 void back_door() {
-   cout << "You have enter through the back door. (is it your first time?)" << endl;
-   kitchen();
-
-}
-void kitchen() {
-     string cabinet;
-    string stove;
     cout << "You have enter in through the back door." << endl;
+    kitchen();        // look around / search the kitchen
+    living_room();    // then head into the living room
+}
+ 
+// The kitchen only handles the kitchen, then returns to whoever called it.
+void kitchen() {
     cout << "You find yourself standing in the kicthen." << endl;
     cout << "It is a normal kicthen, stove, cabinets, fridge, table and chairs." << endl;
     cout << "You can a hear a tv playing so load you can not hear anyting else." << endl;
-    cout << "Would you like to stay in this room or go living room?";
-    getline(cin >> ws, choice);
+    cout << "Would you like to stay in this room or go living room?" << endl;
+    getline(cin, choice);
     choice = toLower(choice);
     if (choice == "stay") {
-        cout << "would you like to search in anything?" << endl;
+        cout << "would you like to search in anything? yes or no" << endl;
         getline(cin, choice);
         choice = toLower(choice);
         if (choice == "yes") {
-            cout << "What would you like to search? cabinet, stove, fridge or cabinet?" << endl;
+            cout << "What would you like to search? cabinet, stove or fridge?" << endl;
             getline(cin, choice);
             choice = toLower(choice);
             if (choice == "cabinet") {
@@ -122,61 +121,72 @@ void kitchen() {
             }
         }
     }
-    living_room();
 }
+ 
 void living_room() {
     cout << "You see you are in a living room with a normal set up, a couch, chair, and a tv playing Nightmare Before Christmas." << endl;
     cout << " The tv is playing so loud you can not hear anything else in the house." << endl;
     cout << "would you like to turn off the tv? yes or no" << endl;
-    getline(cin >> ws, choice);
+    getline(cin, choice);
     choice = toLower(choice);
-
+ 
     if (choice == "yes") {
         cout << "You walk over and turn off tv but fell something fuzzy on your hand but it moves before you can see it" << endl;
     }
-    else if (choice == "no") {
+    else {
         cout << "You are standing there and see a shadow moving around where the tv is mounted" << endl;
         cout << "You look around to see if there is a light casting your shadow that way but find you have shadow" << endl;
     }
-    cout << "Would you like to go in kicthen or hallway?" << endl;
-    getline(cin, choice);
-    if (choice == "kicthen") {
-        kitchen();
-    }
-    else if (choice == "hallway") {
-        hallway();
+ 
+    // keep asking until the player picks a real place; the kitchen comes back here
+    while (true) {
+        cout << "Would you like to go in kitchen or hallway?" << endl;
+        getline(cin, choice);
+        choice = toLower(choice);
+        if (choice == "kitchen") {
+            kitchen();
+        }
+        else if (choice == "hallway") {
+            hallway();
+            return;
+        }
+        else {
+            cout << "Please type kitchen or hallway." << endl;
+        }
     }
 }
-void hallway() { 
+ 
+void hallway() {
     cout << "You feel something hairy rub accross the back of you neck!" << endl;
-    cout << "There are 4 doors, there is a Master Bedroom, Bedroom 1, Bedroom 2, and Bathroom" << endl;
-     while (true) {
+    cout << "There are 4 doors, there is a Master Bedroom, Bedroom 2, Bedroom 3, and Bathroom" << endl;
+    cout << "(Type leave when you are ready to get out of this house.)" << endl;
+    while (true) {
         cout << "Which door do you open? ";
         getline(cin, choice);
         choice = toLower(choice);
-
+ 
         if (choice == "bathroom") {
             bathroom();
-            return;
         } else if (choice == "master bedroom") {
             master_bedroom();
-            return;
         } else if (choice == "bedroom 2") {
             bedroom_2();
-            return;
         } else if (choice == "bedroom 3") {
             bedroom_3();
+        } else if (choice == "leave") {
+            payment_room();
             return;
         } else {
             cout << "That's not a door. Try again." << endl;
         }
+        // after a room finishes, the loop asks for a door again
     }
 }
+ 
 void master_bedroom() {
-    string nightstand;
     cout << "You have enter in to the Master Bedroom." << endl;
     cout << "There is another door that leads to the Master Bathroom, bed, dresser, and a nightstand." << endl;
-    cout << "Would you like to search anything?" << endl;
+    cout << "What would you like to search? bed, dresser, nightstand, or type master bathroom to go through the door." << endl;
     getline(cin, choice);
     choice = toLower(choice);
     if (choice == "nightstand") {
@@ -189,8 +199,8 @@ void master_bedroom() {
     else {
         cout << "You found lint." << endl;
     }
-
 }
+ 
 void master_bathroom() {
     cout << "You have enter the master bathroom." << endl;
     cout << "There is a tub/shower, sink, and a toilet." << endl;
@@ -205,6 +215,7 @@ void master_bathroom() {
         cout << "You found lint." << endl;
     }
 }
+ 
 void bathroom() {
     cout << "You have enter into the bathroom." << endl;
     cout << "There is a toilet, sink, tub" << endl;
@@ -219,6 +230,7 @@ void bathroom() {
         cout << "You found lint." << endl;
     }
 }
+ 
 void bedroom_2() {
     cout << "You have enter a Bedroom" << endl;
     cout << "This bedroom is a childs room with toys all over the place, and a small bed and dresser." << endl;
@@ -237,12 +249,11 @@ void bedroom_2() {
             cout << "All you did was step on toys and found lint." << endl;
         }
     }
-    else if (choice == "no") {
-        hallway();
-    }
+    // "no" just returns to the hallway
 }
+ 
 void bedroom_3() {
-     cout << "You have enter a Bedroom" << endl;
+    cout << "You have enter a Bedroom" << endl;
     cout << "This bedroom is a childs room with toys all over the place, and a small bed and dresser." << endl;
     cout << "Is this room really worth you time to search?" << endl;
     getline(cin, choice);
@@ -259,10 +270,9 @@ void bedroom_3() {
             cout << "All you did was step on toys and found lint." << endl;
         }
     }
-    else if (choice == "no") {
-        hallway();
-    }
+    // "no" just returns to the hallway
 }
+ 
 void payment_room() {
     cout << "You have been transported to a room with white walls and goverment flooring" << endl;
     cout << "The hairy thing you have been feeling is a Tax man" << endl;
