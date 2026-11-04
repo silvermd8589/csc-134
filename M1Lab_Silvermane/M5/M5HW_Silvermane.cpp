@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <string>
 using namespace std;
 //void question_1();
 void question_2();
@@ -13,10 +14,17 @@ void question_3();
 
 
 int main(){
+    int number;
     cout << "Welcome to M5 Homework" << endl;
     cout << "Please pick a question you want to veiw" << endl;
-    
+    cout << "Press 2 for question 2, press 3 for question 3 " << endl;
+    cin >> number;
+    if (number == 3){
     question_3();
+    }
+    else if (number == 2) {
+        question_2();
+    }
     return 0;
 }
 
