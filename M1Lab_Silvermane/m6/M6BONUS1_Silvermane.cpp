@@ -14,169 +14,148 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 // ============================================================
 // PART 1: ENUMS (names for numbers)
 // The compiler counts from 0. NORTH is 0, EAST is 1, and so on.
 // The last name is the count: NUM_DIRECTIONS is 4.
 // ============================================================
-// KEEP: do not write "= number" after these names. Let the compiler count.
 enum Direction {
-NORTH,
-EAST,
-SOUTH,
-WEST,
-NUM_DIRECTIONS // KEEP: always the last name
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST,
+    NUM_DIRECTIONS
 };
-// KEEP: the words must be in the same order as the Direction enum.
+
 const string DIRECTION_NAMES[NUM_DIRECTIONS] = {
-"north", "east", "south", "west"
+    "north", "east", "south", "west"
 };
-// ADD A ROOM, step 1 of 4: add the new name above NUM_ROOMS.
-// EDIT: rename the rooms. The order here must match every list below.
+
 enum Room {
-ENTRANCE_HALL,
-LIBRARY,
-KITCHEN,
-GARDEN,
-BASEMENT,
-// ATTIC, // EXAMPLE 1 of 4
-NUM_ROOMS // KEEP: always the last name
+    LIVING_ROOM,
+    DINING_ROOM,
+    KITCHEN,
+    ALEX_ROOM,
+    PENELOPE,
+    RINA_OFFICE,
+    QUEST_BATHROOM,
+    NUM_ROOMS
 };
+
 int main() {
-// ============================================================
-// PART 2: ROOM DATA (parallel arrays)
-// Same index means same room.
-// roomNames[LIBRARY] and roomDescriptions[LIBRARY] both
-// describe the Library.
-// ============================================================
-// ADD A ROOM, step 2 of 4: add the new name at the end of this list.
-string roomNames[NUM_ROOMS] = {
-"Entrance Hall", // EDIT: use any names you like
-"Library",
-"Kitchen",
-"Garden",
-"Basement",
-// "Attic", // EXAMPLE 2 of 4
-};
-// ADD A ROOM, step 3 of 4: add the new description at the end.
-// TRY: make this list one item shorter than NUM_ROOMS. Does the
-// compiler warn you? What does the game print for that room?
-string roomDescriptions[NUM_ROOMS] = {
-"A grand entrance hall with a dusty chandelier hanging above.",
-"Walls lined with ancient books. The air smells of old paper.",
-"A spacious kitchen with an old stove and wooden counter.",
-"An overgrown garden with stone pathways and a small fountain.",
-"A dark, damp basement with cobwebs in the corners.",
-// "A cramped attic. Sunlight comes through one small window.", //
-EXAMPLE 3 of 4
-};
-// BONUS: objects. Use two more parallel arrays, the same way:
-// string itemNames[NUM_ITEMS] = {"lamp", "key"};
-// int itemRoom[NUM_ITEMS] = {KITCHEN, BASEMENT};
-// itemRoom[i] holds the room number where item i is.
-// You also need an enum Item that ends with NUM_ITEMS.
-// ============================================================
-// PART 3: THE MAP (a 2D array)
-// connections[from_room][direction] holds the room you reach.
-// The value -1 means "no exit".
-// ============================================================
-int connections[NUM_ROOMS][NUM_DIRECTIONS];
-// KEEP: set every cell to -1 first. Then set only the exits that exist.
-for (int i = 0; i < NUM_ROOMS; i++) {
-for (int j = 0; j < NUM_DIRECTIONS; j++) {
-connections[i][j] = -1;
-}
-}
-// ADD A ROOM, step 4 of 4: add the exits in BOTH rooms.
-// EDIT: change, add, or remove exits.
-// Read this line as: from the Entrance Hall, go north to reach the Library.
-connections[ENTRANCE_HALL][NORTH] = LIBRARY;
-connections[ENTRANCE_HALL][EAST] = KITCHEN;
-connections[ENTRANCE_HALL][WEST] = GARDEN;
-connections[LIBRARY][SOUTH] = ENTRANCE_HALL; // the way back
-connections[KITCHEN][SOUTH] = BASEMENT;
-connections[KITCHEN][WEST] = ENTRANCE_HALL;
-connections[GARDEN][EAST] = ENTRANCE_HALL;
-connections[BASEMENT][NORTH] = KITCHEN;
-// connections[LIBRARY][NORTH] = ATTIC; // EXAMPLE 4 of 4
-// connections[ATTIC][SOUTH] = LIBRARY; // EXAMPLE 4 of 4
-// TRY: delete one "way back" line. Predict what the player can do.
-// ============================================================
-// PART 4: GAME STATE
-// ============================================================
-int currentRoom = ENTRANCE_HALL; // EDIT: start in any room
-bool gameRunning = true; // KEEP: the loop runs while this is true
-// ============================================================
-// PART 5: THE GAME LOOP
-// One pass of the loop is one turn:
-// Step 1: show the room and the exits.
-// Step 2: read a command.
-// Step 3: act on the command.
-// Step 4: repeat, unless gameRunning is false.
-// ============================================================
-while (gameRunning) {
-// Step 1: show the room.
-cout << "\nYou are in the " << roomNames[currentRoom] << endl;
-cout << roomDescriptions[currentRoom] << endl;
-// Step 1, continued: show the exits.
-// The loop reads one row of the map. A cell that is not -1 is an exit.
-cout << "Exits: ";
-bool hasExits = false;
-for (int dir = 0; dir < NUM_DIRECTIONS; dir++) {
-if (connections[currentRoom][dir] != -1) {
-cout << DIRECTION_NAMES[dir] << " ";
-hasExits = true;
-}
-}
-if (!hasExits) {
-cout << "none";
-}
-cout << endl;
-// Step 2: read a command. The cin >> operator reads one word.
-// TRY: type "go north". Predict what happens. Why?
-string command;
-cout << "\nWhat would you like to do? ";
-if (!(cin >> command)) {
-break; // KEEP: input ended (Ctrl+D). Stop the loop. Without this
-line, the game never ends.
-}
-// Step 3: act on the command.
-// TRY: type NORTH in capital letters. Why does it fail?
-// STRETCH: the four direction blocks repeat the same idea.
-// Can you replace them with one loop over DIRECTION_NAMES?
-if (command == "north" || command == "n") {
-if (connections[currentRoom][NORTH] != -1) {
-currentRoom = connections[currentRoom][NORTH]; // move to the new
-room
-} else {
-cout << "You can't go that way." << endl;
-}
-} else if (command == "east" || command == "e") {
-if (connections[currentRoom][EAST] != -1) {
-currentRoom = connections[currentRoom][EAST];
-} else {
-cout << "You can't go that way." << endl;
-}
-} else if (command == "south" || command == "s") {
-if (connections[currentRoom][SOUTH] != -1) {
-currentRoom = connections[currentRoom][SOUTH];
-} else {
-cout << "You can't go that way." << endl;
-}
-} else if (command == "west" || command == "w") {
-if (connections[currentRoom][WEST] != -1) {
-currentRoom = connections[currentRoom][WEST];
-} else {
-cout << "You can't go that way." << endl;
-}
-} else if (command == "quit" || command == "q") {
-gameRunning = false; // Step 4 will end the loop
-} else {
-// EDIT: write your own message.
-cout << "I don't understand that command." << endl;
-}
-}
-// EDIT: write your own goodbye.
-cout << "Thanks for playing!" << endl;
-return 0;
+    // ============================================================
+    // PART 2: ROOM DATA (parallel arrays)
+    // Same index means same room.
+    // ============================================================
+    string roomNames[NUM_ROOMS] = {
+        "Living Room",
+        "Dining Room",
+        "Kitchen",
+        "Alex's Room",
+        "Penelope",
+        "Rina's Office",
+        "Quest Bathroom"
+    };
+
+    string roomDescriptions[NUM_ROOMS] = {
+        "A normal living room that is well lived in.",
+        "A kitchen table with some stuff on it, a bookshelf full of books.",
+        "A spacious kitchen with an island counter, stove, dishwasher and fridge.",
+        "A boy room, toy cars and trucks, marvel poster on the wall and some how a bed and full recliner chair.",
+        "A girl room that is some how messy and clean at the same time.",
+        "A small office with a computer, shelves, and a rolling chair.",
+        "A polished bathroom with a sink, mirror, tub and toilet.",
+    };
+
+    // ============================================================
+    // PART 3: THE MAP (a 2D array)
+    // ============================================================
+    int connections[NUM_ROOMS][NUM_DIRECTIONS];
+    for (int i = 0; i < NUM_ROOMS; i++) {
+        for (int j = 0; j < NUM_DIRECTIONS; j++) {
+            connections[i][j] = -1;
+        }
+    }
+
+    connections[LIVING_ROOM][EAST] = DINING_ROOM;
+    
+
+    connections[DINING_ROOM][WEST] = LIVING_ROOM;
+    connections[DINING_ROOM][EAST] = ALEX_ROOM;
+
+    connections[KITCHEN][NORTH] = LIVING_ROOM;
+    connections[KITCHEN][WEST] = PENELOPE;
+
+    connections[ALEX_ROOM][WEST] = DINING_ROOM;
+    connections[ALEX_ROOM][SOUTH] = RINA_OFFICE;
+
+    connections[PENELOPE][EAST] = KITCHEN;
+    connections[PENELOPE][SOUTH] = QUEST_BATHROOM;
+
+    connections[RINA_OFFICE][NORTH] = ALEX_ROOM;
+    connections[RINA_OFFICE][WEST] = QUEST_BATHROOM;
+
+    connections[QUEST_BATHROOM][NORTH] = PENELOPE;
+    connections[QUEST_BATHROOM][EAST] = RINA_OFFICE;
+
+    int currentRoom = LIVING_ROOM;
+    bool gameRunning = true;
+
+    while (gameRunning) {
+        cout << "\nYou are in the " << roomNames[currentRoom] << endl;
+        cout << roomDescriptions[currentRoom] << endl;
+
+        cout << "Exits: ";
+        bool hasExits = false;
+        for (int dir = 0; dir < NUM_DIRECTIONS; dir++) {
+            if (connections[currentRoom][dir] != -1) {
+                cout << DIRECTION_NAMES[dir] << " ";
+                hasExits = true;
+            }
+        }
+        if (!hasExits) {
+            cout << "none";
+        }
+        cout << endl;
+
+        string command;
+        cout << "\nWhat would you like to do? ";
+        if (!(cin >> command)) {
+            break;
+        }
+
+        if (command == "north" || command == "n") {
+            if (connections[currentRoom][NORTH] != -1) {
+                currentRoom = connections[currentRoom][NORTH];
+            } else {
+                cout << "You can't go that way." << endl;
+            }
+        } else if (command == "east" || command == "e") {
+            if (connections[currentRoom][EAST] != -1) {
+                currentRoom = connections[currentRoom][EAST];
+            } else {
+                cout << "You can't go that way." << endl;
+            }
+        } else if (command == "south" || command == "s") {
+            if (connections[currentRoom][SOUTH] != -1) {
+                currentRoom = connections[currentRoom][SOUTH];
+            } else {
+                cout << "You can't go that way." << endl;
+            }
+        } else if (command == "west" || command == "w") {
+            if (connections[currentRoom][WEST] != -1) {
+                currentRoom = connections[currentRoom][WEST];
+            } else {
+                cout << "You can't go that way." << endl;
+            }
+        } else if (command == "quit" || command == "q") {
+            gameRunning = false;
+        } else {
+            cout << "I don't understand that command." << endl;
+        }
+    }
+
+    cout << "Thanks for playing!" << endl;
+    return 0;
 }
