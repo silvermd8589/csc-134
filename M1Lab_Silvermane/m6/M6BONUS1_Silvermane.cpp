@@ -37,7 +37,7 @@ enum Room {
     DINING_ROOM,
     KITCHEN,
     ALEX_ROOM,
-    PENELOPE,
+    PENELOPE_ROOM,
     RINA_OFFICE,
     GUEST_BATHROOM,
     HALLWAY,
@@ -54,7 +54,7 @@ int main() {
         "Dining Room",
         "Kitchen",
         "Alex's Room",
-        "Penelope",
+        "Penelope Room",
         "Rina's Office",
         "Guest Bathroom",
         "Hallway",
@@ -84,24 +84,27 @@ int main() {
     connections[LIVING_ROOM][NORTH] = DINING_ROOM;
     
 
-    connections[DINING_ROOM][WEST] = ALEX_ROOM;
+    connections[DINING_ROOM][EAST] = ALEX_ROOM;
     connections[DINING_ROOM][NORTH] = KITCHEN;
     connections[DINING_ROOM][SOUTH] = LIVING_ROOM;
 
-    connections[KITCHEN][NORTH] = LIVING_ROOM;
-    connections[KITCHEN][WEST] = PENELOPE;
+    connections[KITCHEN][SOUTH] = DINING_ROOM;
+    connections[KITCHEN][EAST] = PENELOPE_ROOM;
+    connections[KITCHEN][NORTH] = HALLWAY;
 
     connections[ALEX_ROOM][WEST] = DINING_ROOM;
-    connections[ALEX_ROOM][SOUTH] = RINA_OFFICE;
+    connections[ALEX_ROOM][NORTH] = PENELOPE_ROOM;
 
-    connections[PENELOPE][EAST] = KITCHEN;
-    connections[PENELOPE][SOUTH] = GUEST_BATHROOM;
+    connections[PENELOPE_ROOM][WEST] = KITCHEN;
+    connections[PENELOPE_ROOM][SOUTH] = ALEX_ROOM;
 
-    connections[RINA_OFFICE][NORTH] = ALEX_ROOM;
-    connections[RINA_OFFICE][WEST] = GUEST_BATHROOM;
+    connections[HALLWAY][SOUTH] = KITCHEN;
+    connections[HALLWAY][EAST] = RINA_OFFICE;
+    connections[HALLWAY][NORTH] = GUEST_BATHROOM;
 
-    connections[GUEST_BATHROOM][NORTH] = PENELOPE;
-    connections[GUEST_BATHROOM][EAST] = RINA_OFFICE;
+    connections[RINA_OFFICE][WEST] = HALLWAY;
+
+    connections[GUEST_BATHROOM][SOUTH] = HALLWAY;
 
     int currentRoom = LIVING_ROOM;
     bool gameRunning = true;
