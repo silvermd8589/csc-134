@@ -39,7 +39,8 @@ enum Room {
     ALEX_ROOM,
     PENELOPE,
     RINA_OFFICE,
-    QUEST_BATHROOM,
+    GUEST_BATHROOM,
+    HALLWAY,
     NUM_ROOMS
 };
 
@@ -55,7 +56,8 @@ int main() {
         "Alex's Room",
         "Penelope",
         "Rina's Office",
-        "Quest Bathroom"
+        "Guest Bathroom",
+        "Hallway",
     };
 
     string roomDescriptions[NUM_ROOMS] = {
@@ -66,6 +68,7 @@ int main() {
         "A girl room that is some how messy and clean at the same time.",
         "A small office with a computer, shelves, and a rolling chair.",
         "A polished bathroom with a sink, mirror, tub and toilet.",
+        "Just a hallway",
     };
 
     // ============================================================
@@ -78,11 +81,12 @@ int main() {
         }
     }
 
-    connections[LIVING_ROOM][EAST] = DINING_ROOM;
+    connections[LIVING_ROOM][NORTH] = DINING_ROOM;
     
 
-    connections[DINING_ROOM][WEST] = LIVING_ROOM;
-    connections[DINING_ROOM][EAST] = ALEX_ROOM;
+    connections[DINING_ROOM][WEST] = ALEX_ROOM;
+    connections[DINING_ROOM][NORTH] = KITCHEN;
+    connections[DINING_ROOM][SOUTH] = LIVING_ROOM;
 
     connections[KITCHEN][NORTH] = LIVING_ROOM;
     connections[KITCHEN][WEST] = PENELOPE;
@@ -91,13 +95,13 @@ int main() {
     connections[ALEX_ROOM][SOUTH] = RINA_OFFICE;
 
     connections[PENELOPE][EAST] = KITCHEN;
-    connections[PENELOPE][SOUTH] = QUEST_BATHROOM;
+    connections[PENELOPE][SOUTH] = GUEST_BATHROOM;
 
     connections[RINA_OFFICE][NORTH] = ALEX_ROOM;
-    connections[RINA_OFFICE][WEST] = QUEST_BATHROOM;
+    connections[RINA_OFFICE][WEST] = GUEST_BATHROOM;
 
-    connections[QUEST_BATHROOM][NORTH] = PENELOPE;
-    connections[QUEST_BATHROOM][EAST] = RINA_OFFICE;
+    connections[GUEST_BATHROOM][NORTH] = PENELOPE;
+    connections[GUEST_BATHROOM][EAST] = RINA_OFFICE;
 
     int currentRoom = LIVING_ROOM;
     bool gameRunning = true;
