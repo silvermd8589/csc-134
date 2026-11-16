@@ -28,6 +28,7 @@ enum Direction {
     NUM_DIRECTIONS
 };
 
+
 const string DIRECTION_NAMES[NUM_DIRECTIONS] = {
     "north", "east", "south", "west"
 };
@@ -43,6 +44,15 @@ enum Room {
     HALLWAY,
     NUM_ROOMS
 };
+
+enum Item {
+    KEY,
+    BUTTER_KNIFE,
+    PICK_SET,
+    NUM_ITEMS
+};
+const int INVENTORY = -2; // an item when the player is carrying the item
+
 
 int main() {
     // ============================================================
@@ -70,6 +80,16 @@ int main() {
         "A polished bathroom with a sink, mirror, tub and toilet.",
         "Just a hallway",
     };
+ 
+    string itemNames[NUM_ITEMS] = { "key" };
+    int itemLocation[NUM_ITEMS] = { GUEST_BATHROOM };   // the key starts here
+
+      // Hidden items can't be seen or taken until the player searches the room
+    bool itemHidden[NUM_ITEMS] = { true, false, false };
+
+    bool roomLocked[NUM_ROOMS] = { false };             // every room starts unlocked
+    roomLocked[RINA_OFFICE] = true;
+
 
     // ============================================================
     // PART 3: THE MAP (a 2D array)
@@ -132,29 +152,70 @@ int main() {
             break;
         }
 
+
         if (command == "north" || command == "n") {
-            if (connections[currentRoom][NORTH] != -1) {
-                currentRoom = connections[currentRoom][NORTH];
-            } else {
+            int nextRoom = connections[currentRoom][NORTH];
+            if (nextRoom == -1) {
                 cout << "You can't go that way." << endl;
+            } else if (roomLocked[nextRoom] && itemLocation[KEY] != INVENTORY) {
+                cout << "The door is locked. You need a key." << endl;
+            } else {
+                if (roomLocked[nextRoom]) {
+                    cout << "You unlock the door with the key." << endl;
+                    roomLocked[nextRoom] = false;
+                }
+                currentRoom = nextRoom;
             }
         } else if (command == "east" || command == "e") {
-            if (connections[currentRoom][EAST] != -1) {
-                currentRoom = connections[currentRoom][EAST];
-            } else {
+            int nextRoom = connections[currentRoom][EAST];
+            if (nextRoom == -1) {
                 cout << "You can't go that way." << endl;
+            } else if (roomLocked[nextRoom] && itemLocation[KEY] != INVENTORY) {
+                cout << "The door is locked. You need a key." << endl;
+            } else {
+                if (roomLocked[nextRoom]) {
+                    cout << "You unlock the door with the key." << endl;
+                    roomLocked[nextRoom] = false;
+                }
+                currentRoom = nextRoom;
             }
         } else if (command == "south" || command == "s") {
-            if (connections[currentRoom][SOUTH] != -1) {
-                currentRoom = connections[currentRoom][SOUTH];
-            } else {
+            int nextRoom = connections[currentRoom][SOUTH];
+            if (nextRoom == -1) {
                 cout << "You can't go that way." << endl;
+            } else if (roomLocked[nextRoom] && itemLocation[KEY] != INVENTORY) {
+                cout << "The door is locked. You need a key." << endl;
+            } else {
+                if (roomLocked[nextRoom]) {
+                    cout << "You unlock the door with the key." << endl;
+                    roomLocked[nextRoom] = false;
+                }
+                currentRoom = nextRoom;
             }
         } else if (command == "west" || command == "w") {
-            if (connections[currentRoom][WEST] != -1) {
-                currentRoom = connections[currentRoom][WEST];
-            } else {
+            int nextRoom = connections[currentRoom][WEST];
+            if (nextRoom == -1) {
                 cout << "You can't go that way." << endl;
+            } else if (roomLocked[nextRoom] && itemLocation[KEY] != INVENTORY) {
+                cout << "The door is locked. You need a key." << endl;
+            } else {
+                if (roomLocked[nextRoom]) {
+                    cout << "You unlock the door with the key." << endl;
+                    roomLocked[nextRoom] = false;
+                }
+                currentRoom = nextRoom;
+            }
+        } else if (command == "take" || command == "t") {
+            bool tookSomething = false;
+            for (int i = 0; i < NUM_ITEMS; i++) {
+                if (itemLocation[i] == currentRoom) {
+                    itemLocation[i] = INVENTORY;
+                    cout << "You pick up the " << itemNames[i] << "." << endl;
+                    tookSomething = true;
+                }
+            }
+            if (!tookSomething) {
+                cout << "There is nothing to take." << endl;
             }
         } else if (command == "quit" || command == "q") {
             gameRunning = false;
@@ -162,7 +223,6 @@ int main() {
             cout << "I don't understand that command." << endl;
         }
     }
-
     cout << "Thanks for playing!" << endl;
     return 0;
 }
