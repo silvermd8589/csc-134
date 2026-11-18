@@ -81,11 +81,15 @@ int main() {
         "Just a hallway",
     };
  
-    string itemNames[NUM_ITEMS] = { "key" };
-    int itemLocation[NUM_ITEMS] = { GUEST_BATHROOM };   // the key starts here
+    string itemNames[NUM_ITEMS] = {
+    "key",
+    "butter knife",
+    "pick set"
+};
+    int itemLocation[NUM_ITEMS] = { GUEST_BATHROOM, BUTTER_KNIFE, PICK_SET };   // the key starts here
 
       // Hidden items can't be seen or taken until the player searches the room
-    bool itemHidden[NUM_ITEMS] = { true, false, false };
+    bool itemHidden[NUM_ITEMS] = { true, true, true };
 
     bool roomLocked[NUM_ROOMS] = { false };             // every room starts unlocked
     roomLocked[RINA_OFFICE] = true;
@@ -132,6 +136,8 @@ int main() {
     while (gameRunning) {
         cout << "\nYou are in the " << roomNames[currentRoom] << endl;
         cout << roomDescriptions[currentRoom] << endl;
+        cout << "You can search the room for hidden items." << endl;
+        cout << "Type 'search' to look around or 'take' to pick up items." << endl;
 
         cout << "Exits: ";
         bool hasExits = false;
@@ -205,10 +211,25 @@ int main() {
                 }
                 currentRoom = nextRoom;
             }
+             } else if (command == "search") {
+            bool foundSomething = false;
+
+            for (int i = 0; i < NUM_ITEMS; i++) {
+                if (itemLocation[i] == currentRoom && itemHidden[i]) {
+                    itemHidden[i] = false;
+                    cout << "You found a " << itemNames[i] << "!" << endl;
+                    foundSomething = true;
+                }
+            }
+
+            if (!foundSomething) {
+                cout << "You didn't find anything." << endl;
+            }
+
         } else if (command == "take" || command == "t") {
             bool tookSomething = false;
             for (int i = 0; i < NUM_ITEMS; i++) {
-                if (itemLocation[i] == currentRoom) {
+                if (itemLocation[i] == currentRoom && !itemHidden[i]) {
                     itemLocation[i] = INVENTORY;
                     cout << "You pick up the " << itemNames[i] << "." << endl;
                     tookSomething = true;
